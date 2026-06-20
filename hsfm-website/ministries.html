@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ministries — Holy Spirit Fire Ministries</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+
+/* ── TOKENS ─────────────────────────────────────────────── */
+:root {
+  --cream:       #F7F2E8;
+  --cream-dark:  #EDE5D4;
+  --cream-mid:   #F0EAD8;
+  --blue:        #3B6B8A;
+  --blue-light:  #5A8BA8;
+  --blue-pale:   #D4E4EE;
+  --blue-deep:   #264D65;
+  --green:       #2F5F45;
+  --green-light: #4A8060;
+  --green-pale:  #D4E8DC;
+  --red:         #8B2A2A;
+  --red-light:   #B03C3C;
+  --red-pale:    #EDD8D8;
+  --text:        #2A2A2A;
+  --text-mid:    #555;
+  --text-muted:  #888;
+  --border:      rgba(42,42,42,0.12);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Jost',sans-serif;
+  font-weight:400;
+  background:var(--cream);
+  color:var(--text);
+  overflow-x:hidden;
+}
+
+.grain{position:relative;}
+.grain::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  z-index:3;
+  opacity:0.045;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:260px 260px;
+  mix-blend-mode:multiply;
+}
+
+/* ── NAV ────────────────────────────────────────────────── */
+nav{
+  position:fixed;
+  top:0;left:0;right:0;
+  z-index:200;
+  background:rgba(247,242,232,0.94);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+  height:72px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 6vw;
+}
+.nav-brand{
+  font-family:'Cormorant Garamond',serif;
+  font-size:20px;
+  font-weight:600;
+  letter-spacing:0.04em;
+  color:var(--blue-deep);
+  text-decoration:none;
+  line-height:1.15;
+}
+.nav-brand small{
+  display:block;
+  font-family:'Jost',sans-serif;
+  font-size:9px;
+  font-weight:500;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:var(--text-muted);
+  margin-top:2px;
+}
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:36px;
+  list-style:none;
+}
+.nav-links a{
+  font-size:12px;
+  font-weight:500;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  text-decoration:none;
+  color:var(--text-mid);
+  transition:color 0.2s;
+}
+.nav-links a:hover{color:var(--blue);}
+.nav-links a.active{color:var(--blue-deep);font-weight:700;}
+.nav-pill{
+  background:var(--red) !important;
+  color:var(--cream) !important;
+  padding:10px 24px;
+  letter-spacing:0.16em !important;
+}
+.nav-pill:hover{background:var(--red-light) !important;color:var(--cream) !important;}
+.nav-toggle{
+  display:none;
+  background:none;
+  border:none;
+  cursor:pointer;
+  padding:8px;
+  flex-direction:column;
+  justify-content:center;
+  gap:5px;
+  z-index:201;
+}
+.nav-toggle span{
+  display:block;
+  width:24px;
+  height:2px;
+  background:var(--blue-deep);
+  transition:all 0.3s;
+  border-radius:2px;
+}
+.nav-toggle.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+.nav-toggle.open span:nth-child(2){opacity:0;transform:scaleX(0);}
+.nav-toggle.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+
+/* ── PAGE HERO (for sub-pages) ──────────────────────────── */
+.page-hero{
+  background:var(--blue-deep);
+  padding-top:72px;
+  position:relative;
+  overflow:hidden;
+}
+.page-hero::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  opacity:0.06;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:240px;
+  pointer-events:none;
+}
+.page-hero-inner{
+  max-width:1200px;
+  margin:0 auto;
+  padding:90px 6vw 70px;
+  position:relative;
+  z-index:1;
+}
+.page-eyebrow{
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:0.28em;
+  text-transform:uppercase;
+  color:var(--blue-pale);
+  opacity:0.75;
+  margin-bottom:20px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+.page-eyebrow::before{
+  content:'';
+  display:block;
+  width:32px;
+  height:1px;
+  background:var(--blue-pale);
+  opacity:0.5;
+}
+.page-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(48px,7vw,88px);
+  font-weight:700;
+  line-height:1.02;
+  color:var(--cream);
+}
+.page-title em{font-style:italic;color:var(--blue-pale);}
+.page-sub{
+  font-size:16px;
+  font-weight:500;
+  line-height:1.8;
+  color:rgba(247,242,232,0.75);
+  max-width:520px;
+  margin-top:24px;
+}
+
+/* ── HERO (home page only) ──────────────────────────────── */
+.hero{
+  min-height:100vh;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  padding-top:72px;
+  overflow:hidden;
+}
+.hero-left{
+  background:var(--blue-deep);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:80px 7vw 80px 6vw;
+  position:relative;
+  z-index:1;
+}
+.hero-left::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  opacity:0.06;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:240px;
+  pointer-events:none;
+  z-index:0;
+}
+.hero-eyebrow{
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:0.28em;
+  text-transform:uppercase;
+  color:var(--blue-pale);
+  opacity:0.7;
+  margin-bottom:28px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  position:relative;
+  z-index:1;
+}
+.hero-eyebrow::before{
+  content:'';
+  display:block;
+  width:32px;
+  height:1px;
+  background:var(--blue-pale);
+  opacity:0.5;
+}
+.hero-img-title{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:0;
+  margin-bottom:36px;
+  position:relative;
+  z-index:1;
+}
+.hero-word{
+  display:block;
+  width:auto;
+  max-width:100%;
+  height:auto;
+  filter: brightness(0) invert(1) sepia(1) saturate(0.3) hue-rotate(180deg) brightness(0.85) opacity(0.92);
+}
+.hero-word.holy      { max-height: clamp(60px, 10vw, 120px); }
+.hero-word.spirit    { max-height: clamp(60px, 10vw, 120px); margin-top:-4px; }
+.hero-word.fire      { max-height: clamp(60px, 10vw, 120px); margin-top:-4px; }
+.hero-word.ministries{ max-height: clamp(32px, 5vw,  68px);  margin-top: 4px; opacity:0.7; }
+.hero-desc{
+  font-size:16px;
+  font-weight:500;
+  line-height:1.85;
+  color:rgba(247,242,232,0.75);
+  max-width:400px;
+  margin-bottom:48px;
+  position:relative;
+  z-index:1;
+}
+.hero-btns{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+  position:relative;
+  z-index:1;
+}
+.btn{
+  display:inline-block;
+  font-family:'Jost',sans-serif;
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  text-decoration:none;
+  padding:15px 36px;
+  transition:all 0.22s;
+  cursor:pointer;
+  border:none;
+}
+.btn-cream{background:var(--cream);color:var(--blue-deep);}
+.btn-cream:hover{background:var(--cream-dark);}
+.btn-ghost{background:transparent;border:1px solid rgba(247,242,232,0.35);color:var(--cream);}
+.btn-ghost:hover{background:rgba(247,242,232,0.08);}
+.btn-blue{background:var(--blue);color:var(--cream);}
+.btn-blue:hover{background:var(--blue-deep);}
+.btn-green{background:var(--green);color:var(--cream);}
+.btn-green:hover{background:var(--green-light);}
+.btn-red{background:var(--red);color:var(--cream);}
+.btn-red:hover{background:var(--red-light);}
+
+.hero-right{
+  background: var(--blue-deep);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  overflow:hidden;
+}
+.hero-right::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  opacity:0.08;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:240px;
+  pointer-events:none;
+  z-index:1;
+}
+.hero-emblem{position:relative;z-index:1;text-align:center;}
+.dove-logo{
+  display:block;
+  width:clamp(260px, 32vw, 420px);
+  height:auto;
+  margin:0 auto 28px;
+  mix-blend-mode: lighten;
+  filter: drop-shadow(0 8px 40px rgba(59,107,138,0.25));
+  position:relative;
+  z-index:2;
+}
+.emblem-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:13px;
+  font-weight:400;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:var(--blue);
+}
+.emblem-sub{
+  font-size:10px;
+  font-weight:500;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--text-muted);
+  margin-top:6px;
+}
+
+/* ── TIMES BAR ──────────────────────────────────────────── */
+.times-bar{background:var(--green);position:relative;z-index:2;}
+.times-bar::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  opacity:0.055;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:240px;
+  pointer-events:none;
+}
+.times-inner{
+  max-width:1200px;
+  margin:0 auto;
+  padding:0 6vw;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  position:relative;
+  z-index:1;
+}
+.time-cell{padding:36px 28px;border-right:1px solid rgba(247,242,232,0.12);}
+.time-cell:last-child{border-right:none;}
+.time-label{
+  font-size:9px;
+  font-weight:600;
+  letter-spacing:0.24em;
+  text-transform:uppercase;
+  color:rgba(247,242,232,0.55);
+  margin-bottom:6px;
+}
+.time-val{
+  font-family:'Cormorant Garamond',serif;
+  font-size:30px;
+  font-weight:700;
+  color:var(--cream);
+  letter-spacing:0.02em;
+  line-height:1;
+}
+.time-note{
+  font-size:12px;
+  font-weight:500;
+  color:rgba(247,242,232,0.65);
+  margin-top:4px;
+}
+
+/* ── SHARED SECTION ─────────────────────────────────────── */
+.section-wrap{max-width:1200px;margin:0 auto;padding:0 6vw;}
+.eyebrow{
+  font-size:9px;
+  font-weight:600;
+  letter-spacing:0.28em;
+  text-transform:uppercase;
+  color:var(--text-muted);
+  margin-bottom:18px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+.eyebrow::before{content:'';display:block;width:28px;height:1px;background:currentColor;}
+.section-h{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(44px,5.5vw,72px);
+  font-weight:700;
+  line-height:1.08;
+  letter-spacing:0.01em;
+}
+.section-h em{font-style:italic;}
+.body-text{font-size:16px;font-weight:500;line-height:1.85;color:var(--text-mid);}
+
+/* ── ABOUT ──────────────────────────────────────────────── */
+.about{padding:120px 0;background:var(--cream);}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.about-text .section-h{color:var(--blue-deep);margin-bottom:28px;}
+.about-text .body-text{max-width:440px;margin-bottom:40px;}
+.about-stats{display:flex;gap:48px;padding-top:40px;border-top:1px solid var(--border);margin-top:48px;}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:700;color:var(--red);line-height:1;}
+.stat-label{font-size:11px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);margin-top:6px;}
+.about-image{
+  background:var(--blue-pale);
+  border-radius:2px;
+  min-height:500px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  overflow:hidden;
+}
+.about-image::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  opacity:0.06;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:240px;
+  pointer-events:none;
+}
+.about-image-content{position:relative;z-index:1;padding:60px;text-align:center;}
+.about-verse{
+  font-family:'Cormorant Garamond',serif;
+  font-size:28px;
+  font-style:italic;
+  font-weight:600;
+  line-height:1.5;
+  color:var(--blue-deep);
+  margin-bottom:16px;
+}
+.about-verse-ref{font-size:11px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--blue);}
+
+/* ── PILLARS ────────────────────────────────────────────── */
+.pillars{padding:0;background:var(--cream-dark);}
+.pillars-top{background:var(--cream-dark);padding:100px 6vw 64px;max-width:100%;position:relative;}
+.pillars-top::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  opacity:0.04;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:240px;
+  pointer-events:none;
+}
+.pillars-head{
+  max-width:1200px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:end;
+  gap:40px;
+  position:relative;
+  z-index:1;
+}
+.pillars-head .section-h{color:var(--blue-deep);}
+.pillars-head .body-text{max-width:400px;}
+.pillars-cards{display:grid;grid-template-columns:repeat(3,1fr);}
+.pillar{padding:60px 48px;position:relative;overflow:hidden;transition:all 0.3s;}
+.pillar:nth-child(1){background:var(--blue);}
+.pillar:nth-child(2){background:var(--green);}
+.pillar:nth-child(3){background:var(--red);}
+.pillar::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  opacity:0.07;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:240px;
+  pointer-events:none;
+}
+.pillar-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:13px;
+  font-weight:400;
+  letter-spacing:0.22em;
+  color:rgba(247,242,232,0.4);
+  margin-bottom:32px;
+  position:relative;
+  z-index:1;
+}
+.pillar-rule{width:40px;height:1px;background:rgba(247,242,232,0.35);margin-bottom:28px;position:relative;z-index:1;}
+.pillar-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:30px;
+  font-weight:700;
+  line-height:1.2;
+  color:var(--cream);
+  margin-bottom:18px;
+  position:relative;
+  z-index:1;
+}
+.pillar-body{font-size:14px;font-weight:500;line-height:1.8;color:rgba(247,242,232,0.8);position:relative;z-index:1;}
+
+/* ── MINISTRIES (clickable cards) ───────────────────────── */
+.ministries{background:var(--cream-dark);padding:100px 0;position:relative;}
+.ministries::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  opacity:0.04;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:240px;
+  pointer-events:none;
+}
+.ministries .section-wrap{position:relative;z-index:1;}
+.min-header{display:grid;grid-template-columns:1fr 1fr;align-items:end;gap:40px;margin-bottom:64px;}
+.min-header .section-h{color:var(--green);}
+.min-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);}
+.min-card{
+  background:var(--cream);
+  padding:48px 40px;
+  transition:background 0.25s, transform 0.2s;
+  position:relative;
+  display:block;
+  text-decoration:none;
+  border-left:3px solid transparent;
+  cursor:pointer;
+}
+.min-card:hover{background:var(--cream-mid);transform:translateY(-2px);}
+.min-card::before{
+  content:attr(data-num);
+  font-family:'Cormorant Garamond',serif;
+  font-size:11px;
+  letter-spacing:0.2em;
+  color:var(--text-muted);
+  display:block;
+  margin-bottom:24px;
+}
+.min-rule{width:32px;height:2px;margin-bottom:24px;}
+.min-card:nth-child(1) .min-rule,
+.min-card:nth-child(4) .min-rule{background:var(--blue);}
+.min-card:nth-child(2) .min-rule,
+.min-card:nth-child(5) .min-rule{background:var(--green);}
+.min-card:nth-child(3) .min-rule,
+.min-card:nth-child(6) .min-rule{background:var(--red);}
+.min-title{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:700;color:var(--text);margin-bottom:12px;line-height:1.2;}
+.min-body{font-size:14px;font-weight:500;line-height:1.75;color:var(--text-mid);margin-bottom:18px;}
+.min-arrow{
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--blue);
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.min-card:hover .min-arrow{color:var(--blue-deep);}
+
+/* ── GIVE CTA BLOCK (used on homepage) ──────────────────── */
+.give{background:var(--red);padding:100px 6vw;position:relative;overflow:hidden;}
+.give::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  opacity:0.07;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:240px;
+  pointer-events:none;
+}
+.give-inner{
+  max-width:1200px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:1fr auto;
+  align-items:center;
+  gap:60px;
+  position:relative;
+  z-index:1;
+}
+.give-eyebrow{font-size:9px;font-weight:600;letter-spacing:0.28em;text-transform:uppercase;color:rgba(247,242,232,0.5);margin-bottom:18px;}
+.give-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(44px,6vw,80px);
+  font-weight:700;
+  font-style:italic;
+  line-height:1.1;
+  color:var(--cream);
+  margin-bottom:20px;
+}
+.give-body{font-size:15px;font-weight:500;line-height:1.8;color:rgba(247,242,232,0.8);max-width:480px;}
+
+/* ── GIVE PAGE (full page version) ──────────────────────── */
+.give-page{background:var(--cream);padding:100px 0 120px;}
+.give-method{
+  background:var(--cream-dark);
+  border:1px solid var(--border);
+  padding:44px 40px;
+  position:relative;
+}
+.give-method-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:26px;
+  font-weight:700;
+  color:var(--blue-deep);
+  margin-bottom:14px;
+}
+.give-method-body{font-size:14px;font-weight:500;line-height:1.75;color:var(--text-mid);margin-bottom:20px;}
+.give-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:56px;}
+.give-scripture{
+  background:var(--blue-pale);
+  padding:60px 48px;
+  text-align:center;
+  margin-top:64px;
+  border-radius:2px;
+}
+.give-scripture-text{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(24px,3vw,34px);
+  font-style:italic;
+  font-weight:600;
+  color:var(--blue-deep);
+  line-height:1.5;
+  max-width:700px;
+  margin:0 auto 14px;
+}
+.give-scripture-ref{font-size:11px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--blue);}
+
+/* ── CONTACT / REACH US ─────────────────────────────────── */
+.contact{background:var(--cream);padding:120px 0;position:relative;}
+.contact::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  opacity:0.04;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:240px;
+  pointer-events:none;
+}
+.contact .section-wrap{position:relative;z-index:1;}
+.contact-header{margin-bottom:72px;}
+.contact-header .section-h{color:var(--blue-deep);}
+.contact-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:80px;align-items:start;}
+.contact-info-group{margin-bottom:36px;}
+.contact-info-label{font-size:9px;font-weight:600;letter-spacing:0.24em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;}
+.contact-info-val{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;line-height:1.6;color:var(--text);}
+.contact-info-val a{color:var(--blue);text-decoration:none;}
+.contact-info-val a:hover{color:var(--blue-deep);}
+
+.form{display:flex;flex-direction:column;gap:16px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.form input,
+.form textarea,
+.form select{
+  width:100%;
+  background:var(--cream-dark);
+  border:1px solid var(--border);
+  border-radius:2px;
+  color:var(--text);
+  font-family:'Jost',sans-serif;
+  font-size:14px;
+  font-weight:500;
+  padding:16px 18px;
+  outline:none;
+  transition:border-color 0.2s, background 0.2s;
+}
+.form input:focus,
+.form textarea:focus{border-color:var(--blue);background:var(--cream);}
+.form input::placeholder,
+.form textarea::placeholder{color:var(--text-muted);font-weight:400;}
+.form textarea{min-height:150px;resize:vertical;}
+.form-note{font-size:12px;font-weight:400;color:var(--text-muted);line-height:1.6;margin-top:4px;}
+
+/* ── MINISTRY DETAIL PAGE (events feed) ─────────────────── */
+.events-section{background:var(--cream);padding:90px 0 120px;}
+.event-card{
+  background:var(--cream-dark);
+  border:1px solid var(--border);
+  display:grid;
+  grid-template-columns:140px 1fr;
+  gap:0;
+  margin-bottom:24px;
+  overflow:hidden;
+  transition:box-shadow 0.2s;
+}
+.event-card:hover{box-shadow:0 8px 28px rgba(38,77,101,0.1);}
+.event-date{
+  background:var(--blue-deep);
+  color:var(--cream);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:24px 16px;
+  text-align:center;
+}
+.event-date-day{font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:700;line-height:1;}
+.event-date-month{font-size:11px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;margin-top:6px;color:var(--blue-pale);}
+.event-body{padding:32px 36px;}
+.event-title{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:700;color:var(--text);margin-bottom:10px;}
+.event-meta{
+  display:flex;
+  gap:24px;
+  flex-wrap:wrap;
+  font-size:13px;
+  font-weight:600;
+  color:var(--blue);
+  margin-bottom:14px;
+  letter-spacing:0.02em;
+}
+.event-meta span{display:flex;align-items:center;gap:6px;}
+.event-desc{font-size:14px;font-weight:500;line-height:1.75;color:var(--text-mid);}
+
+.empty-state{
+  background:var(--cream-dark);
+  border:1px dashed var(--border);
+  padding:80px 40px;
+  text-align:center;
+}
+.empty-state-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:28px;
+  font-weight:700;
+  color:var(--blue-deep);
+  margin-bottom:12px;
+}
+.empty-state-body{font-size:15px;font-weight:500;color:var(--text-mid);max-width:400px;margin:0 auto;}
+
+.ministry-nav{
+  background:var(--cream-dark);
+  border-bottom:1px solid var(--border);
+  padding:20px 0;
+  position:sticky;
+  top:72px;
+  z-index:50;
+}
+.ministry-nav-inner{
+  max-width:1200px;
+  margin:0 auto;
+  padding:0 6vw;
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+.ministry-nav-pill{
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  text-decoration:none;
+  color:var(--text-mid);
+  padding:9px 18px;
+  border-radius:20px;
+  border:1px solid var(--border);
+  background:var(--cream);
+  transition:all 0.2s;
+}
+.ministry-nav-pill:hover{border-color:var(--blue);color:var(--blue);}
+.ministry-nav-pill.active{background:var(--blue-deep);color:var(--cream);border-color:var(--blue-deep);}
+
+/* ── FOOTER ─────────────────────────────────────────────── */
+footer{background:var(--blue-deep);padding:60px 6vw;position:relative;}
+footer::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  opacity:0.07;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:240px;
+  pointer-events:none;
+}
+.footer-inner{
+  max-width:1200px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:1.5fr 1fr 1fr;
+  gap:60px;
+  position:relative;
+  z-index:1;
+  padding-bottom:48px;
+  border-bottom:1px solid rgba(247,242,232,0.1);
+  margin-bottom:32px;
+}
+.footer-brand{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:var(--cream);letter-spacing:0.03em;margin-bottom:12px;}
+.footer-tagline{font-size:13px;font-weight:400;line-height:1.7;color:rgba(247,242,232,0.65);max-width:280px;}
+.footer-col-title{font-size:9px;font-weight:600;letter-spacing:0.24em;text-transform:uppercase;color:rgba(247,242,232,0.4);margin-bottom:20px;}
+.footer-links{list-style:none;}
+.footer-links li{margin-bottom:12px;}
+.footer-links a{font-size:14px;font-weight:500;color:rgba(247,242,232,0.75);text-decoration:none;transition:color 0.2s;}
+.footer-links a:hover{color:var(--cream);}
+.footer-bottom{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;position:relative;z-index:1;}
+.footer-copy{font-size:12px;font-weight:300;color:rgba(247,242,232,0.35);}
+
+/* ── REVEAL ─────────────────────────────────────────────── */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.75s ease, transform 0.75s ease;}
+.reveal.visible{opacity:1;transform:none;}
+
+/* ── RESPONSIVE ─────────────────────────────────────────── */
+@media(max-width:960px){
+  .hero{grid-template-columns:1fr;}
+  .hero-right{display:none;}
+  .about-grid,
+  .pillars-head,
+  .min-header,
+  .give-inner,
+  .give-grid,
+  .contact-grid,
+  .footer-inner,
+  .event-card{grid-template-columns:1fr;}
+  .pillars-cards,
+  .min-grid{grid-template-columns:1fr;}
+  .times-inner{grid-template-columns:1fr 1fr;}
+  .nav-links{
+    display:none;
+    position:fixed;
+    top:72px;left:0;right:0;
+    background:rgba(247,242,232,0.97);
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+    flex-direction:column;
+    align-items:stretch;
+    padding:8px 0 16px;
+    border-bottom:1px solid var(--border);
+    z-index:199;
+    box-shadow:0 12px 32px rgba(38,77,101,0.08);
+  }
+  .nav-links.open{display:flex;}
+  .nav-links li{border-bottom:1px solid var(--border);list-style:none;}
+  .nav-links li:last-child{border-bottom:none;}
+  .nav-links a{display:block;padding:14px 6vw;font-size:13px;letter-spacing:0.14em;}
+  .nav-pill{display:inline-block!important;margin:16px 6vw 0;border-radius:2px;}
+  .nav-toggle{display:flex;}
+  .form-row{grid-template-columns:1fr;}
+  .event-date{flex-direction:row;gap:10px;padding:16px;}
+}
+
+
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    Holy Spirit Fire Ministries
+    <small>Pentecostal Church &middot; International</small>
+  </a>
+  <ul class="nav-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="ministries.html" class="active">Ministries</a></li>
+    <li><a href="worship.html">Worship</a></li>
+    <li><a href="request.html">Request</a></li>
+    <li><a href="reach-us.html">Reach Us</a></li>
+    <li><a href="give.html" class="nav-pill btn">Give</a></li>
+  </ul>
+  <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-eyebrow">Get Involved</div>
+    <h1 class="page-title">Ministries <em>&amp; Programs</em></h1>
+    <p class="page-sub">There is a place for everyone within the body. Tap a ministry below to see its latest events and updates.</p>
+  </div>
+</section>
+
+<section class="ministries" style="padding-top:90px;">
+  <div class="section-wrap">
+    <div class="min-grid">
+      <a href="ministry-youth.html" class="min-card reveal" data-num="01">
+        <div class="min-rule"></div>
+        <div class="min-title">Youth Ministry</div>
+        <p class="min-body">A dedicated space for young people to encounter God, build faith-rooted friendships, and step into their calling early.</p>
+        <div class="min-arrow">See Updates &rarr;</div>
+      </a>
+      <a href="ministry-women.html" class="min-card reveal" style="transition-delay:0.08s" data-num="02">
+        <div class="min-rule"></div>
+        <div class="min-title">Women's Ministry</div>
+        <p class="min-body">Equipping women to walk boldly in their God-given identity, gifts, and purpose through fellowship and the Word.</p>
+        <div class="min-arrow">See Updates &rarr;</div>
+      </a>
+      <a href="ministry-men.html" class="min-card reveal" style="transition-delay:0.16s" data-num="03">
+        <div class="min-rule"></div>
+        <div class="min-title">Men's Ministry</div>
+        <p class="min-body">Iron sharpening iron. Building men of faith, character, and accountability who lead their families with integrity.</p>
+        <div class="min-arrow">See Updates &rarr;</div>
+      </a>
+      <a href="ministry-evangelism.html" class="min-card reveal" style="transition-delay:0.08s" data-num="04">
+        <div class="min-rule"></div>
+        <div class="min-title">Evangelism &amp; Outreach</div>
+        <p class="min-body">Taking the Gospel beyond the walls of the church &mdash; into Tucker's streets and across international borders.</p>
+        <div class="min-arrow">See Updates &rarr;</div>
+      </a>
+      <a href="ministry-bible-study.html" class="min-card reveal" style="transition-delay:0.16s" data-num="05">
+        <div class="min-rule"></div>
+        <div class="min-title">Bible Study</div>
+        <p class="min-body">Mid-week teaching designed to grow believers from milk to solid meat &mdash; rooted, grounded, and Spirit-filled.</p>
+        <div class="min-arrow">See Updates &rarr;</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="give">
+  <div class="give-inner">
+    <div class="reveal">
+      <div class="give-eyebrow">Not Sure Where to Start?</div>
+      <h2 class="give-title">We Can Help<br>You Find a Place</h2>
+      <p class="give-body">Reach out and we'll help connect you with the ministry that fits where you are.</p>
+    </div>
+    <div class="reveal" style="transition-delay:0.15s">
+      <a href="reach-us.html" class="btn btn-cream">Reach Us &rarr;</a>
+    </div>
+  </div>
+</section>
+
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">Holy Spirit Fire Ministries</div>
+      <p class="footer-tagline">A Pentecostal Church with the vision to save souls for the Kingdom of God. Tucker, Georgia &middot; Worldwide.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Navigate</div>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="ministries.html">Ministries</a></li>
+        <li><a href="worship.html">Worship</a></li>
+        <li><a href="request.html">Prayer Request</a></li>
+        <li><a href="reach-us.html">Reach Us</a></li>
+        <li><a href="give.html">Give</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Services</div>
+      <ul class="footer-links">
+        <li><a href="reach-us.html">Sunday 9:00 AM</a></li>
+        <li><a href="reach-us.html">Wednesday 7:00 PM</a></li>
+        <li><a href="reach-us.html">Friday 10PM&ndash;1AM</a></li>
+        <li><a href="https://www.holyspiritfireministries.org" target="_blank">Visit Website &rarr;</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2025 Holy Spirit Fire Ministries International. All rights reserved.</span>
+  </div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}
+  });
+},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// ── Mobile hamburger ────────────────────────────────────
+(function(){
+  var btn = document.querySelector('.nav-toggle');
+  var menu = document.querySelector('.nav-links');
+  if (!btn || !menu) return;
+  btn.addEventListener('click', function(){
+    var open = menu.classList.toggle('open');
+    btn.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', String(open));
+  });
+  menu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      menu.classList.remove('open');
+      btn.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    });
+  });
+})();
+</script>
+</body>
+</html>
