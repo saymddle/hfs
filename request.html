@@ -136,6 +136,16 @@ nav{
 .nav-toggle.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
 .nav-toggle.open span:nth-child(2){opacity:0;transform:scaleX(0);}
 .nav-toggle.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+/* ── NAV DROPDOWN ───────────────────────────────────────── */
+.nav-item-has-children{position:relative;}
+.nav-item-has-children>a::after{content:' ▾';font-size:8px;vertical-align:middle;opacity:0.7;}
+.nav-dropdown{display:none;position:absolute;top:calc(100% + 8px);left:-16px;background:rgba(247,242,232,0.97);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--border);list-style:none;min-width:190px;box-shadow:0 8px 24px rgba(38,77,101,0.12);border-radius:3px;overflow:hidden;z-index:202;}
+.nav-dropdown li{border-bottom:1px solid var(--border);}
+.nav-dropdown li:last-child{border-bottom:none;}
+.nav-dropdown a{display:block;padding:13px 20px;font-size:11px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;text-decoration:none;color:var(--text-mid);transition:color 0.2s,background 0.2s;white-space:nowrap;}
+.nav-dropdown a::after{display:none !important;}
+.nav-dropdown a:hover{color:var(--blue);background:var(--cream-dark);}
+.nav-item-has-children:hover .nav-dropdown{display:block;}
 
 /* ── PAGE HERO (for sub-pages) ──────────────────────────── */
 .page-hero{
@@ -812,6 +822,15 @@ footer::after{
 .footer-bottom{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;position:relative;z-index:1;}
 .footer-copy{font-size:12px;font-weight:300;color:rgba(247,242,232,0.35);}
 
+/* ── TESTIMONIALS ───────────────────────────────────────── */
+.testimonials-section{background:var(--cream-dark);padding:90px 0 100px;}
+.testimonial-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px;}
+.testimonial-card{background:var(--cream);border:1px solid var(--border);padding:36px 32px;position:relative;}
+.testimonial-card::before{content:'\201C';font-family:'Bodoni Moda',serif;font-size:80px;font-weight:700;color:var(--blue-pale);position:absolute;top:8px;left:22px;line-height:1;}
+.testimonial-body{font-size:15px;font-weight:500;line-height:1.8;color:var(--text-mid);margin-top:44px;margin-bottom:24px;font-style:italic;}
+.testimonial-name{font-family:'Bodoni Moda',serif;font-size:16px;font-weight:700;color:var(--blue-deep);}
+.testimonial-role{font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-muted);margin-top:4px;}
+
 /* ── REVEAL ─────────────────────────────────────────────── */
 .reveal{opacity:0;transform:translateY(24px);transition:opacity 0.75s ease, transform 0.75s ease;}
 .reveal.visible{opacity:1;transform:none;}
@@ -859,6 +878,11 @@ footer::after{
   .pillar{padding:40px 28px;}
   .about-image-content{padding:40px 24px;}
   img{max-width:100%;height:auto;}
+  .nav-item-has-children>a::after{display:none;}
+  .nav-dropdown{display:block;position:static;background:none;backdrop-filter:none;-webkit-backdrop-filter:none;border:none;box-shadow:none;border-radius:0;min-width:unset;}
+  .nav-dropdown li{border-color:rgba(42,42,42,0.06);}
+  .nav-dropdown a{padding:10px 6vw 10px calc(6vw + 20px);}
+  .testimonial-grid{grid-template-columns:1fr;}
 }
 
 
@@ -875,7 +899,12 @@ footer::after{
     <li><a href="about.html">About</a></li>
     <li><a href="ministries.html">Ministries</a></li>
     <li><a href="worship.html">Worship</a></li>
-    <li><a href="request.html" class="active">Request</a></li>
+    <li class="nav-item-has-children"><a href="request.html" class="active">Request</a>
+      <ul class="nav-dropdown">
+        <li><a href="request.html">Prayer Request</a></li>
+        <li><a href="request.html#testimonials">Testimonials</a></li>
+      </ul>
+    </li>
     <li><a href="reach-us.html">Reach Us</a></li>
     <li><a href="give.html" class="nav-pill btn">Give</a></li>
   </ul>
@@ -926,6 +955,39 @@ footer::after{
           </button>
         </form>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ─────────────────────────────────────── -->
+<section class="testimonials-section" id="testimonials">
+  <div class="section-wrap">
+    <div class="reveal">
+      <div class="eyebrow">What Our Church Family Says</div>
+      <h2 class="section-h" style="color:var(--blue-deep);margin-bottom:48px;">
+        Stories of <em>Answered Prayer</em>
+      </h2>
+    </div>
+    <div class="testimonial-grid">
+
+      <div class="testimonial-card reveal">
+        <p class="testimonial-body">I submitted a prayer request during one of the hardest seasons of my life, and within days I felt a shift. The prayers of this church family carried me through in ways I cannot fully explain. God is faithful.</p>
+        <div class="testimonial-name">Sister M. Johnson</div>
+        <div class="testimonial-role">Church Member</div>
+      </div>
+
+      <div class="testimonial-card reveal" style="transition-delay:0.08s">
+        <p class="testimonial-body">When my husband was diagnosed, I didn&rsquo;t know where to turn. I reached out to the prayer team here and felt instantly supported. The Lord moved, and my husband is recovering well. To God be the glory.</p>
+        <div class="testimonial-name">Sister D. Williams</div>
+        <div class="testimonial-role">Women&rsquo;s Ministry</div>
+      </div>
+
+      <div class="testimonial-card reveal" style="transition-delay:0.16s">
+        <p class="testimonial-body">I was going through financial hardship and asked the prayer team to agree with me in faith. Within two weeks, doors opened that I had been knocking on for years. This ministry truly stands in the gap.</p>
+        <div class="testimonial-name">Brother K. Thomas</div>
+        <div class="testimonial-role">Church Member</div>
+      </div>
+
     </div>
   </div>
 </section>

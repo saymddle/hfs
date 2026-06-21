@@ -136,6 +136,16 @@ nav{
 .nav-toggle.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
 .nav-toggle.open span:nth-child(2){opacity:0;transform:scaleX(0);}
 .nav-toggle.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+/* ── NAV DROPDOWN ───────────────────────────────────────── */
+.nav-item-has-children{position:relative;}
+.nav-item-has-children>a::after{content:' ▾';font-size:8px;vertical-align:middle;opacity:0.7;}
+.nav-dropdown{display:none;position:absolute;top:calc(100% + 8px);left:-16px;background:rgba(247,242,232,0.97);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--border);list-style:none;min-width:190px;box-shadow:0 8px 24px rgba(38,77,101,0.12);border-radius:3px;overflow:hidden;z-index:202;}
+.nav-dropdown li{border-bottom:1px solid var(--border);}
+.nav-dropdown li:last-child{border-bottom:none;}
+.nav-dropdown a{display:block;padding:13px 20px;font-size:11px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;text-decoration:none;color:var(--text-mid);transition:color 0.2s,background 0.2s;white-space:nowrap;}
+.nav-dropdown a::after{display:none !important;}
+.nav-dropdown a:hover{color:var(--blue);background:var(--cream-dark);}
+.nav-item-has-children:hover .nav-dropdown{display:block;}
 
 /* ── PAGE HERO (for sub-pages) ──────────────────────────── */
 .page-hero{
@@ -908,7 +918,12 @@ footer::after{
     <li><a href="about.html">About</a></li>
     <li><a href="ministries.html">Ministries</a></li>
     <li><a href="worship.html" class="active">Worship</a></li>
-    <li><a href="request.html">Request</a></li>
+    <li class="nav-item-has-children"><a href="request.html">Request</a>
+      <ul class="nav-dropdown">
+        <li><a href="request.html">Prayer Request</a></li>
+        <li><a href="request.html#testimonials">Testimonials</a></li>
+      </ul>
+    </li>
     <li><a href="reach-us.html">Reach Us</a></li>
     <li><a href="give.html" class="nav-pill btn">Give</a></li>
   </ul>
