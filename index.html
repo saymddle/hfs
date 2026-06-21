@@ -75,7 +75,11 @@ nav{
   color:var(--blue-deep);
   text-decoration:none;
   line-height:1.15;
+  display:flex;
+  align-items:center;
+  gap:12px;
 }
+.nav-logo-img{height:44px;width:44px;object-fit:contain;flex-shrink:0;}
 .nav-brand small{
   display:block;
   font-family:'Jost',sans-serif;
@@ -318,10 +322,10 @@ nav{
   width:clamp(260px, 32vw, 420px);
   height:auto;
   margin:0 auto 28px;
-  mix-blend-mode: lighten;
-  filter: drop-shadow(0 8px 40px rgba(59,107,138,0.25));
+  filter: drop-shadow(0 8px 48px rgba(0,0,0,0.35));
   position:relative;
   z-index:2;
+  border-radius:50%;
 }
 .emblem-name{
   font-family:'Cormorant Garamond',serif;
@@ -849,6 +853,7 @@ footer::after{
 
 <nav>
   <a href="index.html" class="nav-brand">
+    <img src="images/logo.png" alt="HSFM seal" class="nav-logo-img">
     Holy Spirit Fire Ministries
     <small>Pentecostal Church &middot; International</small>
   </a>

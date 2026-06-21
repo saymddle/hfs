@@ -75,7 +75,11 @@ nav{
   color:var(--blue-deep);
   text-decoration:none;
   line-height:1.15;
+  display:flex;
+  align-items:center;
+  gap:12px;
 }
+.nav-logo-img{height:44px;width:44px;object-fit:contain;flex-shrink:0;}
 .nav-brand small{
   display:block;
   font-family:'Jost',sans-serif;
@@ -897,6 +901,7 @@ footer::after{
 
 <nav>
   <a href="index.html" class="nav-brand">
+    <img src="images/logo.png" alt="HSFM seal" class="nav-logo-img">
     Holy Spirit Fire Ministries
     <small>Pentecostal Church &middot; International</small>
   </a>
