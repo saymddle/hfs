@@ -31,7 +31,7 @@
 }
 
 *{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
+html{scroll-behavior:smooth;overflow-x:hidden;}
 body{
   font-family:'Jost',sans-serif;
   font-weight:400;
@@ -182,7 +182,7 @@ nav{
 }
 .page-title{
   font-family:'Bodoni Moda',serif;
-  font-size:clamp(72px,9.5vw,128px);
+  font-size:clamp(40px,9.5vw,128px);
   font-weight:900;
   line-height:1.02;
   color:var(--cream);
@@ -249,7 +249,7 @@ nav{
 .hero-h1{
   font-family:'Bodoni Moda',serif;
   font-weight:900;
-  font-size:clamp(64px, 9vw, 104px);
+  font-size:clamp(36px, 9vw, 104px);
   line-height:1.1;
   color:var(--cream);
   margin-bottom:36px;
@@ -405,7 +405,7 @@ nav{
 .eyebrow::before{content:'';display:block;width:28px;height:1px;background:currentColor;}
 .section-h{
   font-family:'Bodoni Moda',serif;
-  font-size:clamp(64px,7.5vw,108px);
+  font-size:clamp(36px,7.5vw,108px);
   font-weight:900;
   line-height:1.08;
   letter-spacing:0.01em;
@@ -418,7 +418,7 @@ nav{
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
 .about-text .section-h{color:var(--blue-deep);margin-bottom:28px;}
 .about-text .body-text{max-width:440px;margin-bottom:40px;}
-.about-stats{display:flex;gap:48px;padding-top:40px;border-top:1px solid var(--border);margin-top:48px;}
+.about-stats{display:flex;gap:48px;flex-wrap:wrap;padding-top:40px;border-top:1px solid var(--border);margin-top:48px;}
 .stat-num{font-family:'Bodoni Moda',serif;font-size:80px;font-weight:900;color:var(--red);line-height:1;}
 .stat-label{font-size:11px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);margin-top:6px;}
 .about-image{
@@ -593,7 +593,7 @@ nav{
 .give-eyebrow{font-size:9px;font-weight:600;letter-spacing:0.28em;text-transform:uppercase;color:rgba(247,242,232,0.5);margin-bottom:18px;}
 .give-title{
   font-family:'Bodoni Moda',serif;
-  font-size:clamp(64px,7.5vw,108px);
+  font-size:clamp(36px,7.5vw,108px);
   font-weight:900;
   font-style:italic;
   line-height:1.1;
@@ -844,6 +844,12 @@ footer::after{
   .nav-toggle{display:flex;}
   .form-row{grid-template-columns:1fr;}
   .event-date{flex-direction:row;gap:10px;padding:16px;}
+  .about-stats{flex-direction:column;gap:16px;}
+  .stat-num{font-size:52px;}
+  .page-title,.hero-h1,.section-h,.give-title{overflow-wrap:break-word;word-break:break-word;}
+  .pillar{padding:40px 28px;}
+  .about-image-content{padding:40px 24px;}
+  img{max-width:100%;height:auto;}
 }
 
 
